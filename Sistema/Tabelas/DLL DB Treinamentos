@@ -1,0 +1,29 @@
+CREATE TABLE public.treinamento (
+    id int4 NOT NULL,
+    data_hora timestamp NOT NULL,
+    "local" varchar NOT NULL,
+    descricao varchar NOT NULL,
+    id_tipo_treinamento int4 NULL,
+    CONSTRAINT treinamento_pk PRIMARY KEY (id),
+    CONSTRAINT treinamento_fk FOREIGN KEY (id_tipo_treinamento) REFERENCES public.tipo_treinamento(id)
+);
+CREATE TABLE public.tipo_treinamento (
+    id int4 NOT NULL,
+    descricao varchar NOT NULL,
+    CONSTRAINT tipo_treinamento_pk PRIMARY KEY (id)
+);
+CREATE TABLE public.usuario (
+    id int4 NOT NULL,
+    nome varchar NOT NULL,
+    sobrenome varchar NOT NULL,
+    "role" varchar NOT NULL,
+    email varchar NULL,
+    CONSTRAINT usuario_pk PRIMARY KEY (id)
+);
+CREATE TABLE public.usuario_treinamento (
+    id_usuario int4 NOT NULL,
+    id_treinamento int4 NOT NULL,
+    presente bool NOT NULL,
+    CONSTRAINT usuario_treinamento_fk FOREIGN KEY (id_treinamento) REFERENCES public.treinamento(id),
+    CONSTRAINT usuario_treinamento_fk_1 FOREIGN KEY (id_usuario) REFERENCES public.usuario(id)
+);
