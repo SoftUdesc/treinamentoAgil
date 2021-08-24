@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface de Treinamento</title>
+    <style>
+        h1{
+            font: normal 30pt Calibri;
+            color: white;
+            background: darkgreen;
+            text-align: center;
+            width: 1915px;
+            height: 100px;
+            line-height: 100px;
+            
+        }
+        #user{
+            font: normal 15pt Calibri ;
+            color: white;
+            margin-left: 96vw;
+            margin-top: -3.7vw;
+            background: darkgreen;
+        }
+       
+        .titulo{
+            font: normal 20pt Calibri ;
+            color: darkgreen;
+            margin-top: 20px;
+        }
+        .form-group{
+            font: normal 15pt Verdana ; 
+            margin-bottom: 20px;
+        }
+        .form-group  span{
+            font-size: 12px;
+            color: green;
+            cursor: pointer;
+        }
+        .form-group p{
+               font-size: 12px;
+                overflow: hidden;
+                height: 0px;
+                transition:  1s;
+            }
+            .mostrar{
+                height: 80px !important;
+            }
+        .b{
+            color: white;
+            background-color: darkgreen;
+        }
+        #u{
+            font: normal 40pt Calibri ;
+            color: darkgreen;
+            
+        }
+        </style>
+</head>
+<body>
+    <h1>MENU DE TREINAMENTO</h1>
+    <div id="u">Olá Usuário!</div>
+    <p class="titulo">SEUS TREINAMENTOS<div class="m">(Marque todos os treinamentos que forem concluidos)</div></p>
+    <div class="form-group">
+        <input class="checkbox" id="checkbox1" type="checkbox">
+        <label for="checkbox1"> Treinamento em Trello</label><span> Acessar</span>
+        <p>Progresso: 0%<br>Duração: 2 horas<br>Status: Início<br><br><button class="b">Entrar</button></p>
+    </div>
+    <div class="form-group">
+        <input class="checkbox" id="checkbox2" type="checkbox">
+        <label for="checkbox2"> Treinamento em Jira</label><span> Acessar</span>
+        <p>Progresso: 0%<br>Duração: 2 horas<br>Status: Início<br><br><button class="b">Entrar</button></p>
+    </div>
+    <div class="form-group">
+        <input class="checkbox" id="checkbox3" type="checkbox">
+        <label for="checkbox3"> Treinamento de Indicadores de Planilha</label><span> Acessar</span>
+        <p>Progresso: 0%<br>Duração: 2 horas<br>Status: Início<br><br><button class="b">Entrar</button></p>
+    </div>
+    <script>
+              var nome = String(window.prompt('Bem Vindo! - Por favor informe seu nome'))
+              var user = window.document.getElementById('u')
+              user.innerText = `Olá ${nome}!`
+              
+              function acionar_span(idx){
+                    span[idx].addEventListener('click',function(){
+                    var conteudo = document.querySelectorAll('.form-group p')
+
+                    if(conteudo[idx].classList.contains('mostrar')){
+                        span[idx].innerHTML = "Acessar"
+                        span[idx].style.color = 'green'
+                        conteudo[idx].classList.remove('mostrar')
+                    }else{
+                        span[idx].innerHTML = "Fechar"
+                        span[idx].style.color = 'red'
+                        conteudo[idx].classList.add('mostrar')
+                    }
+                })
+                }
+               
+                var span = document.querySelectorAll('.form-group span')
+
+                span.forEach((item,index)=>{
+                    span[index].addEventListener('click',()=>{
+                        var a = index
+                        acionar_span(a);
+                    })
+                })
+        </script>
+</body>
+</html>
